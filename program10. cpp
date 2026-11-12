@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a, b, c, d, e, total;
+    float percentage;
+
+    cout << "Enter marks of five subjects: ";
+    cin >> a >> b >> c >> d >> e;
+
+    total = a + b + c + d + e;
+    percentage = total / 5.0;
+
+    cout << "Total Marks = " << total << endl;
+    cout << "Percentage = " << percentage << "%" << endl;
+
+    if (a < 40 || b < 40 || c < 40 || d < 40 || e < 40)
+        cout << "Result: Failed";
+    else if (percentage < 50)
+        cout << "Degree Requirement Not Met";
+    else if (percentage >= 85)
+        cout << "Passed - Gold Medal";
+    else if (percentage >= 75)
+        cout << "Passed - Silver Medal";
+    else if (percentage >= 65)
+        cout << "Passed - Merit Scholarship";
+    else
+        cout << "Passed - No Award";
+
+    return 0;
+}

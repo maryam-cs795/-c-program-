@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float balance, amount, daily;
+    int blocked, verify;
+
+    cout << "Enter account balance: ";
+    cin >> balance;
+
+    cout << "Enter withdrawal amount: ";
+    cin >> amount;
+
+    cout << "Enter today's withdrawn amount: ";
+    cin >> daily;
+
+    cout << "Account blocked? (1=Yes, 0=No): ";
+    cin >> blocked;
+
+    cout << "Verification completed? (1=Yes, 0=No): ";
+    cin >> verify;
+
+    if (blocked == 1)
+        cout << "Transaction Rejected";
+    else if (amount < 500 || (int)amount % 500 != 0)
+        cout << "Invalid Amount";
+    else if (amount > balance)
+        cout << "Insufficient Balance";
+    else if (daily + amount > 100000)
+        cout << "Daily Limit Exceeded";
+    else if (amount > 50000 && verify == 0)
+        cout << "Verification Required";
+    else
+    {
+        cout << "Transaction Allowed" << endl;
+        cout << "Remaining Balance = Rs. "
+             << balance - amount;
+    }
+
+    return 0;
+}

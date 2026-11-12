@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    float damage, payable;
+    int insurance, expired, license, alcohol;
+    int inspection, manager, responsible;
+
+    cout << "Valid Insurance? (1=Yes, 0=No): ";
+    cin >> insurance;
+
+    cout << "Policy Expired? (1=Yes, 0=No): ";
+    cin >> expired;
+
+    cout << "Valid License? (1=Yes, 0=No): ";
+    cin >> license;
+
+    cout << "Alcohol Influence? (1=Yes, 0=No): ";
+    cin >> alcohol;
+
+    cout << "Enter Damage Amount: ";
+    cin >> damage;
+
+    if (insurance == 0 || expired == 1 ||
+        license == 0 || alcohol == 1)
+    {
+        cout << "Claim Rejected";
+        return 0;
+    }
+
+    if (damage < 20000)
+        cout << "Approved Without Inspection" << endl;
+
+    else if (damage <= 200000)
+    {
+        cout << "Physical Inspection Passed? (1=Yes, 0=No): ";
+        cin >> inspection;
+
+        if (inspection == 0)
+        {
+            cout << "Claim Not Approved";
+            return 0;
+        }
+    }
+    else
+    {
+        cout << "Manager Approved? (1=Yes, 0=No): ";
+        cin >> manager;
+
+        if (manager == 0)
+        {
+            cout << "Claim Not Approved";
+            return 0;
+        }
+    }
+
+    payable = damage;
+
+    cout << "Driver Responsible? (1=Yes, 0=No): ";
+    cin >> responsible;
+
+    if (responsible == 1)
+        payable -= payable * 0.20;
+
+    cout << "Claim Approved" << endl;
+    cout << "Final Payable Amount = Rs. " << payable;
+
+    return 0;
+}
